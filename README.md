@@ -1,6 +1,6 @@
 # SPA for LDPC Codes
 
-This project implements the **Sum Product Algorithm (SPA)** for decoding **Low-Density Parity-Check (LDPC)** codes. It includes encoding, decoding, and performance analysis for LDPC codes over noisy communication channels.
+This project This project implements the **Sum Product Algorithm (SPA)** for decoding **Low-Density Parity-Check (LDPC)** codes. It includes encoding, decoding, and performance analysis for LDPC codes over noisy communication channels. It was developed by me during my Master's studies at Skoltech University, Skolkovo, Russia.
 
 ## Table of Contents
 - [Introduction](#introduction)
