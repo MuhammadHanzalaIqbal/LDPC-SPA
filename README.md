@@ -52,6 +52,3 @@ pip install numpy matplotlib
   - Multiple SNR values for BER and FER evaluation.
 - Plots generated using `matplotlib`.
 
-## License
-This project is licensed under the MIT License. Feel free to use and modify the code.
-
