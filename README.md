@@ -1,54 +1,43 @@
-# SPA for LDPC Codes
+# LDPC-SPA
 
-This project This project implements the **Sum Product Algorithm (SPA)** for decoding **Low-Density Parity-Check (LDPC)** codes. It includes encoding, decoding, and performance analysis for LDPC codes over noisy communication channels. It was developed by me during my Master's studies at Skoltech University, Skolkovo, Russia.
+**Sum-Product Algorithm (SPA) decoder for Low-Density Parity-Check (LDPC) codes — encoding, soft-information decoding, and BER/FER performance analysis over an AWGN channel.**
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Dependencies](#dependencies)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [License](#license)
+A Python implementation of belief-propagation / sum-product decoding for LDPC codes. The simulation evaluates LDPC-coded transmission over a noisy channel: encode → AWGN channel → SPA decoder → BER and FER curves across SNR.
 
-## Introduction
-Low-Density Parity-Check (LDPC) codes are a powerful class of error-correcting codes used in modern communication systems. The Sum Product Algorithm (SPA) is an iterative message-passing algorithm employed to decode LDPC codes. This project demonstrates the application of SPA with examples of performance evaluation under varying Signal-to-Noise Ratios (SNRs).
+## What this project does
 
-## Features
-- Belief Propagation (SPA): Implements SPA for decoding LDPC codes.
-- Encoding and Decoding: Simulates communication over noisy channels.
-- BER and FER Analysis: Evaluates Bit Error Rate (BER) and Frame Error Rate (FER) for multiple SNR values.
-- Visualization: Includes plots for BER and FER performance across SNRs.
+- **Encoding:** systematic LDPC encoder using a parity-check matrix `H`.
+- **Channel:** additive white Gaussian noise with parameterizable SNR (Eb/N0).
+- **Decoding:** iterative **Sum-Product Algorithm** (a.k.a. belief propagation) operating on the Tanner graph of `H`. Soft log-likelihood-ratio messages are exchanged between variable nodes and check nodes; iterations continue until convergence or a max-iter cap.
+- **Evaluation:**
+  - **BER** (Bit Error Rate) and **FER** (Frame Error Rate) measured across a sweep of SNR values.
+  - A single-SNR (2.5 dB) detailed run as a sanity-check waterfall point.
+  - Full multi-SNR sweep to draw the canonical BER-vs-SNR curve.
+- **Visualization:** BER/FER vs SNR curves with `matplotlib`.
 
-## Dependencies
-The project is implemented in Python and uses the following libraries:
-- `numpy`
-- `matplotlib`
+## What's in here
 
-Install dependencies using:
+| File | Purpose |
+|---|---|
+| `Project.rar` | Python source (`.ipynb` + helpers) — extract before running |
+| `ICT_SPA.pdf` | Written project report |
+| `README.md` | This document |
+
+## Running it
+
+After extracting `Project.rar`:
+
 ```bash
 pip install numpy matplotlib
+jupyter notebook ICT_Project_SPA_for_LDPC.ipynb
 ```
 
-## Usage
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/spa-for-ldpc.git
-    cd spa-for-ldpc
-    ```
-2. Open the Jupyter Notebook `ICT_Project_SPA_for_LDPC.ipynb`:
-    ```bash
-    jupyter notebook ICT_Project_SPA_for_LDPC.ipynb
-    ```
-3. Run the cells step-by-step to:
-   - Load the MNIST image data.
-   - Simulate encoding and decoding using SPA.
-   - Analyze performance metrics (BER and FER).
-   - Visualize results.
+Run cells in order: encoding setup → SPA decoder definition → single-SNR demo → BER/FER sweeps → plots.
 
-## Project Structure
-- `ICT_Project_SPA_for_LDPC.ipynb`: Main notebook with code, documentation, and visualizations.
-- Simulation examples for:
-  - Single SNR value (2.5 dB).
-  - Multiple SNR values for BER and FER evaluation.
-- Plots generated using `matplotlib`.
+## Context
 
+Academic project developed during M.Sc. studies at the **Skolkovo Institute of Science and Technology (Skoltech)**. Sits in the same digital-communications portfolio as [`Channel-Estimation`](https://github.com/MuhammadHanzalaIqbal/Channel-Estimation), [`mimo-channel-estimation`](https://github.com/MuhammadHanzalaIqbal/mimo-channel-estimation), and [`mimo-channel-denoising`](https://github.com/MuhammadHanzalaIqbal/mimo-channel-denoising).
+
+---
+
+*Author: Muhammad Hanzala Iqbal.*
